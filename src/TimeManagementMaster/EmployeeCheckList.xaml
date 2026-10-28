@@ -1,0 +1,22 @@
+<UserControl x:Class="TimeManagementMaster.EmployeeCheckList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:TimeManagementMaster">
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6">
+      <Button DockPanel.Dock="Right" Content="{loc:Loc ClearSelection}" Click="Clear_Click" Margin="8,0,0,0"/>
+      <Button DockPanel.Dock="Right" Content="{loc:Loc SelectAll}" Click="All_Click" Margin="0"/>
+      <TextBox x:Name="SearchBox" TextChanged="SearchChanged"/>
+    </DockPanel>
+    <TextBlock DockPanel.Dock="Top" x:Name="CountText" Foreground="{StaticResource MutedBrush}" Margin="0,0,0,4"/>
+    <TextBlock DockPanel.Dock="Bottom" Text="{loc:Loc SelectionKept}" Style="{StaticResource MutedText}" FontSize="11" Margin="0,6,0,0"/>
+    <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="1" CornerRadius="8" Background="{StaticResource PaperBrush}" Padding="12,6">
+    <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Height="170">
+      <StackPanel x:Name="Panel"/>
+    </ScrollViewer>
+      <TextBlock x:Name="EmptyText" Visibility="Collapsed" Style="{StaticResource MutedText}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="12"/>
+    </Grid>
+    </Border>
+  </DockPanel>
+</UserControl>

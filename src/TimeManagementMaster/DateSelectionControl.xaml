@@ -1,0 +1,33 @@
+<UserControl x:Class="TimeManagementMaster.DateSelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:TimeManagementMaster">
+  <StackPanel>
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+      <RadioButton x:Name="OneDayRadio" Content="{loc:Loc OneDay}" GroupName="DateMode" IsChecked="True" Margin="0,0,12,0" Checked="ModeChanged"/>
+      <RadioButton x:Name="PeriodRadio" Content="{loc:Loc PeriodMode}" GroupName="DateMode" Margin="0,0,12,0" Checked="ModeChanged"/>
+      <RadioButton x:Name="ListRadio" Content="{loc:Loc SeparateDays}" GroupName="DateMode" Checked="ModeChanged"/>
+    </StackPanel>
+    <StackPanel x:Name="OneDayPanel" Orientation="Horizontal">
+      <DatePicker x:Name="SingleDate"/>
+    </StackPanel>
+    <StackPanel x:Name="PeriodPanel" Visibility="Collapsed">
+      <StackPanel Orientation="Horizontal">
+        <DatePicker x:Name="FromDate"/>
+        <TextBlock Text="—" VerticalAlignment="Center" Margin="0,0,8,0"/>
+        <DatePicker x:Name="ToDate"/>
+      </StackPanel>
+      <CheckBox x:Name="WeekdaysOnly" Content="{loc:Loc WeekdaysOnly}" IsChecked="True" Margin="0,8,0,0"/>
+      <TextBlock Text="{loc:Loc WeekdaysHint}" Style="{StaticResource MutedText}" Margin="0,4,0,0"/>
+    </StackPanel>
+    <StackPanel x:Name="ListPanel" Visibility="Collapsed">
+      <DockPanel Margin="0,0,0,6">
+        <Button DockPanel.Dock="Right" Content="{loc:Loc AddDate}" Click="AddDate_Click" Margin="8,0,0,0"/>
+        <DatePicker x:Name="ExtraDate"/>
+      </DockPanel>
+      <ListBox x:Name="DatesList" Height="110"/>
+      <Button Content="{loc:Loc RemoveDate}" HorizontalAlignment="Left" Margin="0,6,0,0" Click="RemoveDate_Click"/>
+      <TextBlock Text="{loc:Loc SeparateDaysHint}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+    </StackPanel>
+  </StackPanel>
+</UserControl>

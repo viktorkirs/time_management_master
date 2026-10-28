@@ -1,0 +1,31 @@
+<UserControl x:Class="TimeManagementMaster.WorkTimeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:TimeManagementMaster">
+  <StackPanel>
+    <CheckBox x:Name="TrackBox" Content="{loc:Loc TrackTime}" IsChecked="True" Checked="Changed" Unchecked="Changed" Margin="0,0,0,10"/>
+    <StackPanel x:Name="Fields">
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,12,0"><TextBlock Text="{loc:Loc WorkStart}" Style="{StaticResource FormLabel}"/>
+          <TextBox x:Name="StartBox" Text="08:00" MaxLength="5" TextChanged="Changed" AutomationProperties.Name="{loc:Loc WorkStart}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1"><TextBlock Text="{loc:Loc WorkEnd}" Style="{StaticResource FormLabel}"/>
+          <TextBox x:Name="EndBox" Text="17:00" MaxLength="5" TextChanged="Changed" AutomationProperties.Name="{loc:Loc WorkEnd}"/>
+        </StackPanel>
+      </Grid>
+      <CheckBox x:Name="NextDayBox" Content="{loc:Loc NextDayEnd}" Checked="Changed" Unchecked="Changed" Margin="0,8,0,0"/>
+      <CheckBox x:Name="LunchBox" Content="{loc:Loc HasLunch}" IsChecked="True" Checked="Changed" Unchecked="Changed" Margin="0,12,0,8"/>
+      <Grid x:Name="LunchFields">
+        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,12,0"><TextBlock Text="{loc:Loc LunchFrom}" Style="{StaticResource FormLabel}"/>
+          <TextBox x:Name="LunchStartBox" Text="12:00" MaxLength="5" TextChanged="Changed" AutomationProperties.Name="{loc:Loc LunchFrom}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1"><TextBlock Text="{loc:Loc LunchTo}" Style="{StaticResource FormLabel}"/>
+          <TextBox x:Name="LunchEndBox" Text="13:00" MaxLength="5" TextChanged="Changed" AutomationProperties.Name="{loc:Loc LunchTo}"/>
+        </StackPanel>
+      </Grid>
+    </StackPanel>
+    <TextBlock x:Name="Summary" Style="{StaticResource MutedText}" Margin="0,10,0,0"/>
+  </StackPanel>
+</UserControl>

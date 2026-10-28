@@ -1,0 +1,19 @@
+<Window x:Class="TimeManagementMaster.ConflictWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        xmlns:loc="clr-namespace:TimeManagementMaster"
+        Title="{loc:Loc ConflictTitle}" Height="560" Width="720" MinHeight="360" MinWidth="560"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+  <DockPanel Margin="16">
+    <TextBlock DockPanel.Dock="Top" Text="{loc:Loc ConflictIntro}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+      <Button x:Name="CancelButton" Content="{loc:Loc Cancel}" MinWidth="110" IsCancel="True" Click="Cancel_Click"/>
+      <Button Content="{loc:Loc EditDates}" MinWidth="140" Click="Edit_Click"/>
+      <Button x:Name="ReplaceButton" Content="{loc:Loc ReplaceSave}" MinWidth="180" Style="{StaticResource PrimaryButton}" Margin="0" Click="Replace_Click"/>
+    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+      <StackPanel x:Name="Blocks"/>
+    </ScrollViewer>
+  </DockPanel>
+</Window>

@@ -1,0 +1,56 @@
+<Window x:Class="TimeManagementMaster.AbsenceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        xmlns:loc="clr-namespace:TimeManagementMaster"
+        Title="{loc:Loc LeaveRegister}" Height="720" Width="1080" MinHeight="580" MinWidth="980"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+  <DockPanel Margin="24">
+    <TextBlock DockPanel.Dock="Top" Text="{loc:Loc LeaveRegister}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20"/>
+    <Button DockPanel.Dock="Bottom" Content="{loc:Loc Close}" HorizontalAlignment="Right" MinWidth="120" Margin="0,12,0,0" IsCancel="True"/>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="320"/>
+      </Grid.ColumnDefinitions>
+      <DockPanel Grid.Column="0" Margin="0,0,12,0">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+          <TextBlock Text="{loc:Loc Employee}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+          <ComboBox x:Name="EmployeeBox" Width="280" DisplayMemberPath="FullName" SelectionChanged="EmployeeChanged"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,8,0,0">
+          <Button Content="{loc:Loc ChangePeriod}" Click="Edit_Click"/>
+          <Button x:Name="CloseSickButton" Content="{loc:Loc SetEndDate}" Click="CloseSick_Click"/>
+          <Button Content="{loc:Loc CancelAbsence}" Margin="0" Click="CancelAbsence_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="AbsenceGrid" SelectionMode="Single" SelectionChanged="AbsenceSelectionChanged">
+          <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Period}" Width="*">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{loc:Loc Period}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Label}" Width="220">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{loc:Loc Absence}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </DockPanel>
+      <StackPanel Grid.Column="1">
+        <TextBlock Text="{loc:Loc NewAbsence}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock Text="{loc:Loc Kind}" Margin="0,0,0,4"/>
+        <ComboBox x:Name="KindBox" DisplayMemberPath="Title" SelectionChanged="KindChanged"/>
+        <TextBlock Text="{loc:Loc Start}" Margin="0,8,0,4"/>
+        <DatePicker x:Name="StartDate"/>
+        <CheckBox x:Name="OpenBox" Content="{loc:Loc Ongoing}" Margin="0,8,0,0" Checked="OpenChanged" Unchecked="OpenChanged"/>
+        <TextBlock Text="{loc:Loc End}" Margin="0,8,0,4"/>
+        <DatePicker x:Name="EndDate"/>
+        <TextBlock Text="{loc:Loc NoteOther}" Margin="0,8,0,4" TextWrapping="Wrap"/>
+        <TextBox x:Name="NoteBox" MaxLength="50"/>
+        <Button Content="{loc:Loc Add}" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Margin="0,12,0,0" Click="Add_Click"/>
+      </StackPanel>
+    </Grid>
+  </DockPanel>
+</Window>
